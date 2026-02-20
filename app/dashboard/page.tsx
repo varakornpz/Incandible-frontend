@@ -3,13 +3,15 @@
 import axios from "axios"
 
 import { getCookie } from 'cookies-next/client'; 
-import { useEffect } from "react";
+import { access } from "fs";
+import { useEffect , useState } from "react";
 
 export default async ()=>{
+    const [access_token ,setAccessToken] = useState<undefined | string>("")
+    var sayHiRes
     useEffect(()=>{
         const sayhi_api = process.env.NEXT_PUBLIC_API_SAY_HI
-        const access_token = getCookie("access_token")
-        var sayHiRes
+        setAccessToken(getCookie("access_token"))
         const fetchHi = async (api_url : string) => {
             const res = await axios.get(api_url , {
                 headers : {
@@ -25,7 +27,7 @@ export default async ()=>{
     },[])
     return(
         <div>
-            <p>Hi</p>
+            <p>{access_token}</p>
         </div>
     )
 }

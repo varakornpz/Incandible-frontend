@@ -25,7 +25,7 @@ export default ()=>{
     },[])
     return(
         <div>
-            <p>{access_token}</p>
+            <p className="text-white">{access_token != undefined || "" ? access_token : "token not found"}</p>
         </div>
     )
 }

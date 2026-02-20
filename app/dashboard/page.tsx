@@ -11,11 +11,12 @@ export default async ()=>{
         const access_token = getCookie("access_token")
         var sayHiRes
         const fetchHi = async (api_url : string) => {
-            return await axios.get(api_url , {
+            const res = await axios.get(api_url , {
                 headers : {
                     'Authorization': `Bearer ${access_token}`
                 }
             })
+            return res
         }
         if (sayhi_api) {
             const res = fetchHi(sayhi_api)

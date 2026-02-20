@@ -10,16 +10,16 @@ export default ()=>{
     useEffect(()=>{
         const sayhi_api = process.env.NEXT_PUBLIC_API_SAY_HI
         setAccessToken(getCookie("access_token"))
-        const fetchHi = async (api_url : string) => {
-            const res = await axios.get(api_url , {
+        const fetchHi = async (api_url : string , t? : string) => {
+            const res = await axios.get(api_url ,{
                 headers : {
-                    'Authorization': `Bearer ${access_token}`
+                    'Authorization': `Bearer ${t ?? ""}`
                 }
             })
             return res
         }
         if (sayhi_api) {
-            const res = fetchHi(sayhi_api)
+            const res = fetchHi(sayhi_api , access_token)
             console.log(res)
         }
     },[])

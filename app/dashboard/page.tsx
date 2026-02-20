@@ -3,12 +3,10 @@
 import axios from "axios"
 
 import { getCookie } from 'cookies-next/client'; 
-import { access } from "fs";
 import { useEffect , useState } from "react";
 
 export default async ()=>{
     const [access_token ,setAccessToken] = useState<undefined | string>("")
-    var sayHiRes
     useEffect(()=>{
         const sayhi_api = process.env.NEXT_PUBLIC_API_SAY_HI
         setAccessToken(getCookie("access_token"))

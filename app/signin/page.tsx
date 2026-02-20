@@ -5,7 +5,9 @@ import Link from "next/link";
 
 import { FcGoogle } from "react-icons/fc";
 
-const loginUrl = "http://localhost:3334/auth/google/signin"
+
+const loginUrl = process.env.NEXT_PUBLIC_API_SIGN_IN
+const sayhiApi = process.env.NEXT_PUBLIC_API_SAY_HI
 
 export default ()=>{
     return (

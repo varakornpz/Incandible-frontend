@@ -5,7 +5,7 @@ import axios from "axios"
 import { getCookie } from 'cookies-next/client'; 
 import { useEffect , useState } from "react";
 
-export default async ()=>{
+export default ()=>{
     const [access_token ,setAccessToken] = useState<undefined | string>("")
     useEffect(()=>{
         const sayhi_api = process.env.NEXT_PUBLIC_API_SAY_HI

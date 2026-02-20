@@ -16,7 +16,9 @@ export default async ()=>{
         })
         console.log(sayHiRes)
     }
-    <div>
-
-    </div>
+    return(
+        <div>
+            <p>Hi</p>
+        </div>
+    )
 }

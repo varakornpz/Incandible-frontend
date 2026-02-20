@@ -11,7 +11,7 @@ export default ()=>{
             const res = await axios.get(api_url ,{
                 withCredentials : true
             })
-            return res
+            return res.data
         }
         if (sayhi_api) {
             const res = fetchHi(sayhi_api)

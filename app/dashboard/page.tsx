@@ -9,7 +9,7 @@ export default ()=>{
     const [access_token ,setAccessToken] = useState<undefined | string>("")
     useEffect(()=>{
         const sayhi_api = process.env.NEXT_PUBLIC_API_SAY_HI
-        const token = getCookie("access_token") as string | undefined
+        const token = getCookie("dump") as string | undefined
         setAccessToken(token)
         const fetchHi = async (api_url : string , t? : string) => {
             const res = await axios.get(api_url ,{

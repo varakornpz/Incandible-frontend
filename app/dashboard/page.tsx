@@ -1,19 +1,30 @@
 'use client'
 
+
+
 import axios from "axios"
 
 import { useEffect , useState } from "react";
 
 import ProfileCard from "../components/ProfileCard";
 import SignoutBtn from "../components/SignoutBtn";
+import AddCane from "../components/AddCane";
+
+import { useContext } from "react";
+import { UserContext } from "../providers/UserData";
+import CaneList from "../components/CaneList";
+
 
 export default ()=>{
-    const [me , setMe] = useState({
-        name : "loading..." ,
-        email : "loading..." ,
-        profile_pic : "https://static.vecteezy.com/system/resources/thumbnails/032/176/191/small/business-avatar-profile-black-icon-man-of-user-symbol-in-trendy-flat-style-isolated-on-male-profile-people-diverse-face-for-social-network-or-web-vector.jpg" ,
-        canes : []
-    })
+    const context = useContext(UserContext)
+
+    if(!context){
+        return (
+            <div className="text-white">Loading...</div>
+        )
+    }
+
+    const {userData , setUserData} = context
     useEffect(()=>{
         const sayhi_api = process.env.NEXT_PUBLIC_API_SAY_HI
         const give_me   = process.env.NEXT_PUBLIC_API + "/app/me"
@@ -33,25 +44,33 @@ export default ()=>{
         })
         .then((res)=>{
             if(res.status == 200){
-                setMe(res.data)
+                setUserData({
+                    name : res.data.name ,
+                    email : res.data.email ,
+                    profile_pic : res.data.profile_pic ,
+                    canes : res.data.canes
+                })
             }
+            console.log(res.data.canes)
         })
     },[])
     return(
         <div className="w-full min-h-screen flex flex-col sm:px-10">
-            <div className="flex flex-col sm:flex-row justify-between items-center relative">
+            <div className="flex flex-col sm:flex-row justify-between items-center relative pt-10">
                     <ProfileCard
-                    name={me.name}
-                    email={me.email}
-                    profile_pic={me.profile_pic}
-                    canes={me.canes}
+                    name={userData?.name ?? ""}
+                    email={userData?.email ?? ""}
+                    profile_pic={userData?.profile_pic ?? ""}
                     />
                     <div className="mr-10">
                         <SignoutBtn/>
                     </div>
             </div>
-            <div>
-
+            <div className="w-fit h-fit pt-5">
+                <AddCane/>
+                <div className="mt-4">
+                    <CaneList/>
+                </div>
             </div>
         </div>
     )

@@ -7,6 +7,11 @@ const ibmPlexSans = IBM_Plex_Sans({
   subsets : ["latin"]
 })
 
+import { UserProvider } from "./providers/UserData";
+import { ToastContainer } from "react-toastify";
+
+import Navbar from "./components/Navbar";
+
 
 export const metadata: Metadata = {
   title: "Incanedible",
@@ -38,8 +43,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${ibmPlexSans.className} antialiased`}
+        
       >
+      <UserProvider>
+        <Navbar/>
         {children}
+        <ToastContainer />
+      </UserProvider>
       </body>
     </html>
   );

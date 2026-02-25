@@ -11,8 +11,8 @@ const sayhiApi = process.env.NEXT_PUBLIC_API_SAY_HI
 
 export default ()=>{
     return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center">
-            <div className="flex flex-col text-lg sm:text-xl items-center gap-y-2">
+        <div className="w-full flex flex-col items-center justify-center">
+            <div className="flex flex-col text-lg sm:text-xl items-center gap-y-2 pt-[40vh]">
                 <p>
                     Google sign in is the only way,
                     <br className="md:hidden" /> 

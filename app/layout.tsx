@@ -16,6 +16,7 @@ import Navbar from "./components/Navbar";
 export const metadata: Metadata = {
   title: "Incanedible",
   description: "Cane with shitty feature.",
+  metadataBase : new URL("https://incanedible.varakorn.net") ,
   openGraph : {
     title : "Incanedible" ,
     description : "website for incanedible" ,
@@ -41,10 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${ibmPlexSans.className} antialiased`}
-        
-      >
+      <body className={`${ibmPlexSans.className} antialiased min-h-screen w-full`}>
       <UserProvider>
         <Navbar/>
         {children}

@@ -55,18 +55,15 @@ export default ()=>{
         })
     },[])
     return(
-        <div className="w-full min-h-screen flex flex-col sm:px-10">
-            <div className="flex flex-col sm:flex-row justify-between items-center relative pt-10">
+        <div className="flex flex-col px-3 sm:px-10 pt-10">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
                     <ProfileCard
                     name={userData?.name ?? ""}
                     email={userData?.email ?? ""}
                     profile_pic={userData?.profile_pic ?? ""}
                     />
-                    <div className="mr-10">
-                        <SignoutBtn/>
-                    </div>
             </div>
-            <div className="w-fit h-fit pt-5">
+            <div className="w-full h-fit pt-5">
                 <AddCane/>
                 <div className="mt-4">
                     <CaneList/>

@@ -9,8 +9,20 @@ import { successNoti , warnNoti } from "@/actions/client/mytoast";
 import { toast } from 'react-toastify';
 
 import { CaneActionsContext } from "../providers/UserData";
+import { UserContext , type userData} from "../providers/UserData";
+
 
 export default ()=>{
+
+    const context = useContext(UserContext)
+
+    if(!context){
+        return (
+            <div className="text-white">Loading...</div>
+        )
+    }
+
+    const {userData , setUserData} = context
     const { addCane, removeCane } = useContext(CaneActionsContext)!;
     const addCaneApiUrl = process.env.NEXT_PUBLIC_API_ADD_CANE
     const inputRef = useRef<HTMLInputElement>(null);
@@ -65,8 +77,8 @@ export default ()=>{
     return(
         <div className="flex items-center border-2 rounded-md border-gray-400 w-fit">
             <input ref={inputRef} id="1" className="h-8 w-40 bg-[#444444] focus:outline-none rounded-md px-1" type="text" placeholder="cane id" />
-            <button onClick={handleFormSubmit} >
-                {isAdding ?
+            <button onClick={handleFormSubmit} disabled >
+                {isAdding || !userData?.name ?
                     <AiOutlineLoading className="text-xl font-bold mx-2 animate-spin"/>
                 :
                     <IoIosAdd className="text-xl font-bold mx-2 hover:cursor-pointer"/>

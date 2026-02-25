@@ -76,20 +76,24 @@ const UserProvider = ({children} : {children : ReactNode}) =>{
 
     useEffect(()=>{
         const fetchUser = async ()=>{
-            try{ 
-                const res = await axios.get(meApiUrl ?? "" , {withCredentials : true})
 
-                const safeData = {
+                await axios.get(meApiUrl ?? "" , {withCredentials : true})
+                .then((res)=>{
+                    const safeData = {
                     ...res.data,
                     canes: Array.isArray(res.data.canes) ? res.data.canes : []
                 }
-
                 setUserData(safeData)
+                })
+                .catch((err)=>{
+                    if (err.response.data.ok == false){
+                        return
+                    }
+                    warnNoti("Internal server error." , "cant load user data.")
+                })
+
+            
             }
-            catch{
-                warnNoti("Internal website error" , "Load data failed.")
-            }
-        }
 
         fetchUser()
     },[])

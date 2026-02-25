@@ -16,7 +16,7 @@ export default({email , name , profile_pic , canes} : Props)=>{
 
     return(
         <div className="w-fit rounded-lg flex">
-            <div className={`flex flex-col sm:flex-row items-center gap-4 ${name == "" ? "animate-pulse" : ""}`}>
+            <div className={`flex flex-col sm:flex-row items-center gap-4 ${name == "" ? "animate-tw-pulse" : ""}`}>
                 {name == "" ?
                 <CgProfile className="text-black w-24 h-24 sm:w-16 sm:h-16 bg-white rounded-full"/>
                 :

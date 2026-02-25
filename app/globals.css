@@ -10,6 +10,17 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --animate-tw-pulse: tw-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes tw-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {

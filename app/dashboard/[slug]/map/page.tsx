@@ -4,11 +4,18 @@
 import { successNoti, warnNoti } from '@/actions/client/mytoast'
 import { useParams } from 'next/navigation'
 import { useEffect , useState } from 'react'
-import MyMap from './MyMap'
 
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 
+
+    const Map = useMemo(() => dynamic(
+    () => import("./MyMap"), 
+    { 
+      loading: () => <p>A map is loading...</p>,
+      ssr: false
+    }
+  ), []);
 
 export default ()=>{
     const params = useParams()
@@ -61,18 +68,10 @@ export default ()=>{
 
     },[cane_id, socketLocationApi])
 
-    const Map = useMemo(() => dynamic(
-    () => import("./MyMap"), 
-    { 
-      loading: () => <p>A map is loading...</p>,
-      ssr: false
-    }
-  ), []);
-
     return (
         <div className='w-full h-full'>
             {location.lat && location.lng ?
-                <div className='w-full h-full'>
+                <div className='w-full h-175'>
                     <Map posix={[location.lat , location.lng]}/>
                 </div>
             :

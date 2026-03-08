@@ -4,6 +4,7 @@
 import { successNoti, warnNoti } from '@/actions/client/mytoast'
 import { useParams } from 'next/navigation'
 import { useEffect , useState } from 'react'
+import MyMap from './MyMap'
 
 
 export default ()=>{
@@ -59,10 +60,15 @@ export default ()=>{
 
     return (
         <div>
-            <p>map of {cane_id}</p>
-            <p>lat : {location.lat}</p>
-            <p>lng : {location.lng}</p>
-            <p>sat : {location.sat}</p>
+            {location.lat && location.lng ?
+                <div>
+                    <MyMap posix={[location.lat , location.lng]}/>
+                </div>
+            :
+            <div>
+                Loading...
+            </div>
+            }
         </div>
     )
 }

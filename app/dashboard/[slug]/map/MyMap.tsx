@@ -24,8 +24,8 @@ export default ({zoom = defaults.zoom , posix} : MapProps)=>{
       attributionControl={false}
       center={posix}
       zoom={zoom}
-      scrollWheelZoom={false}
-      className="w-full h-full"
+      scrollWheelZoom={true}
+      className="absolute inset-0 z-0"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

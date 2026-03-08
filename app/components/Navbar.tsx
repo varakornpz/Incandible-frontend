@@ -11,14 +11,20 @@ export default ()=>{
     const pathname = usePathname();
     console.log(pathname)
     return (
-        <div className="h-fit w-full flex items-center bg-black py-2 px-6 justify-between">
+        <div className="h-fit w-full flex items-center py-2 px-6 justify-between">
             <Link href={"/"}>
-                <AiOutlineHome className="w-10 h-10 text-white"/>
+                <AiOutlineHome className="w-10 h-10 text-black"/>
             </Link>
             <div className="flex gap-2 sm:gap-4">
-                <Link href={"/dashboard"}>
-                    <p className="font-semibold text-base">Dashboad</p>
-                </Link>
+                <div>
+                    {pathname != "/dashboard" && pathname != "/signin" && pathname != "/" ?
+                        <Link href={"/dashboard"}>
+                            <p className="font-semibold text-base">Dashboad</p>
+                        </Link>
+                    :
+                        null
+                    }
+                </div>
                 <div>
                     {pathname.startsWith("/dashboard") ?
                         <SignoutBtn/>

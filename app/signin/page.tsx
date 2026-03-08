@@ -18,9 +18,9 @@ export default ()=>{
                     <br className="md:hidden" /> 
                     this is all I can do stop trying
                 </p>
-                <a href={loginUrl} className="flex items-center bg-white w-fit px-2 py-1 rounded-4xl border border-black/95">
+                <a href={loginUrl} className="flex items-center bg-[#131314] w-fit px-2 py-1 rounded-4xl border border-black/95">
                     <FcGoogle className="w-10 h-10" />
-                    <p className="text-black text-xl font-normal">Sign in with Google</p>
+                    <p className="text-white text-xl font-normal">Sign in with Google</p>
                 </a>
             </div>
             <div className="pt-4">

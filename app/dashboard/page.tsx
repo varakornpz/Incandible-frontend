@@ -55,7 +55,7 @@ export default ()=>{
         })
     },[])
     return(
-        <div className="flex flex-col px-3 sm:px-10 pt-10">
+        <div className="flex flex-col px-3 sm:px-10 pt-10 w-full items-center justify-center">
             <div className="flex flex-col sm:flex-row justify-between items-center">
                     <ProfileCard
                     name={userData?.name ?? ""}
